@@ -1,2 +1,2 @@
-# validatior-library
+# validator-library
 Validation library using data binding
