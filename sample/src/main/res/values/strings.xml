@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Data Binding Validator Sample</string>
+    <string name="custom_error_username">Custom message: Username not valid</string>
+    <string name="custom_error_password_not_equal">Custom message: passwords are not equals!!</string>
+    <string name="custom_error_cpf">Custom message: CPF is wrong man!</string>
+    <string name="custom_error_date">Custom message: It\'s not a date!</string>
+    <string name="custom_error_min_length">Custom message: This message is too small!</string>
+    <string name="custom_error_max_length">Custom message: This message is too big!</string>
+    <string name="regexErrorMessage">Regex error</string>
+    <string name="spinnerErrorMessage">Spinner error</string>
+    <string name="radioErrorMessage">Radio error</string>
+    <string name="seekbarLengthLabel">SeekBar min value 5 and max should be 50</string>
+    <string-array name="array_name">
+        <item>Array Item One</item>
+        <item>Array Item Two</item>
+        <item>Array Item Three</item>
+    </string-array>
+</resources>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="handler"
+            type="br.com.ilhasoft.support.validation.sample.MainActivity"/>
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    app:validateMaxLength="@{10}"
+                    app:validateMaxLengthMessage="@{@string/custom_error_max_length}"
+                    app:validateMinLength="@{4}"
+                    app:validateMinLengthAutoDismiss="@{true}"
+                    app:validateMinLengthMessage="@{@string/custom_error_min_length}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    app:validateType='@{"email"}'
+                    app:validateTypeAutoDismiss="@{true}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Date"
+                    android:maxLength="10"
+                    app:validateDate='@{"dd/MM/yyyy"}' />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkbox"
+                android:onClick="@{(v) -> handler.toggleLayout(v)}"/>
+
+            <LinearLayout
+                android:id="@+id/llToggle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <EditText
+                    android:id="@+id/edt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Not Empty"
+                    android:inputType="number"
+                    app:validateEditEmpty="@{true}"
+                    app:validateEditEmptyAutoDismiss="@{true}"
+                    app:validateEditEmptyMessage="@{@string/spinnerErrorMessage}"
+                    app:validateEditSelected="@{txtEditError}" />
+
+                <TextView
+                    android:id="@+id/txtEditError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/emailRegex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    app:validateEditRegex='@{"[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"}'
+                    app:validateEditRegexMessage="@{@string/regexErrorMessage}"
+                    app:validateEditSelected="@{txtRegexEditError}"
+                    android:inputType="textEmailAddress" />
+
+
+                <TextView
+                    android:id="@+id/txtRegexEditError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/array_name"
+                app:validateSelected="@{spinnerLabel}"
+                app:validateSelectedMessage="@{@string/spinnerErrorMessage}"
+                app:validateSpinnerAutoDismiss="@{true}" />
+
+            <TextView
+                android:id="@+id/spinnerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioGroup
+                android:id="@+id/myRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:validateRadioAutoDismiss="@{true}"
+                app:validateRadioSelected="@{radioLabel}"
+                app:validateRadioSelectedMessage="@{@string/radioErrorMessage}">
+
+                <RadioButton
+                    android:id="@+id/rbOption1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 1" />
+
+                <RadioButton
+                    android:id="@+id/rbOption2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 2" />
+
+                <RadioButton
+                    android:id="@+id/rbOption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 3" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/radioLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <SeekBar
+                android:id="@+id/seekBar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:validateSeekBarLengthMessage="@{@string/seekbarLengthLabel}"
+                app:validateSeekBarMaxLength="@{50}"
+                app:validateSeekBarMinLength="@{5}"
+                app:validateSeekBarSelected="@{seekbarLabel}" />
+
+            <TextView
+                android:id="@+id/seekbarLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/edt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Not Empty"
+                android:inputType="number"
+                app:validateEditEmpty="@{true}"
+                app:validateEditEmptyAutoDismiss="@{true}"
+                app:validateEditEmptyMessage="@{@string/spinnerErrorMessage}"
+                app:validateEditSelected="@{txtEditError2}" />
+
+            <TextView
+                android:id="@+id/txtEditError2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:id="@+id/to_validate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick="validate"
+                android:text="Validate" />
+        </LinearLayout>
+    </ScrollView>
+</layout>
